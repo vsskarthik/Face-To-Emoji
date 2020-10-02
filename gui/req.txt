@@ -2,3 +2,4 @@ opencv
 tensorflow
 emoji
 pyperclip
+pyqt5
