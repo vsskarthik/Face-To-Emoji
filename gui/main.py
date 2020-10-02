@@ -1,10 +1,18 @@
+import os
 from os import system
 
-windows = False
+use_qt = True
 
-if(not windows):
+if os.name == "nt":
+    print('Windows')
+    if(use_qt):
+        system('start python qt_gui.py')
+    else:
+        system('start python text_box.py')
+    system('start python cam.py')
+else:
+    print('Linux/Unix')
     system('python3 text_box.py &')
     system('python3 cam.py &')
-else:
-    system('python text_box.py &')
-    system('python cam.py &')
+
+

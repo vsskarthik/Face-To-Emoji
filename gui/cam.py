@@ -1,8 +1,12 @@
+print("[INFO] Loading Modules")
+
 import cv2
 import numpy as np
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 import tensorflow as tf
+
+print("[INFO] Modules Loaded")
 
 
 #STEPS
@@ -15,8 +19,12 @@ import tensorflow as tf
 # Get the output
 # Display the emotion from emotion array
 
+print("[INFO] Staring Camera")
+
+SHOW_TEXT = False
 cap = cv2.VideoCapture(0)
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+
 model = tf.keras.models.load_model('../trained_models/fer_0-1426_0-9519.h5')
 emotion = ['Angry','Disgust','Fear','Happy','Neutral','Sad','Suprise']
 curr_emoji = None
@@ -42,8 +50,7 @@ def load_emojis(dir):
     return img
 
 
-emojis = load_emojis('emojis')
-
+emojis = load_emojis('../emojis')
 
 pred = None
 while(True):
@@ -63,14 +70,16 @@ while(True):
         pred = np.argmax(model.predict(np.array([pred_img]))[0])
         if(prev_pred != pred):
             update_curr_emoji(pred)
-        frame = disp_text(emotion[pred],frame)
+        if SHOW_TEXT:
+            frame = disp_text(emotion[pred],frame)
         try:
             cv2.imshow("Emoji",cv2.resize(emojis[pred],(256,256)))
         except:
             pass
-    cv2.imshow('Face Image',frame)
+    cv2.imshow('Face Image',cv2.resize(frame,(600,400)))
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
+print("[INFO] Done....Releasing Recources")
 cap.release()
 cv2.destroyAllWindows()
