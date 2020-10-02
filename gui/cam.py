@@ -73,10 +73,12 @@ while(True):
         if SHOW_TEXT:
             frame = disp_text(emotion[pred],frame)
         try:
-            cv2.imshow("Emoji",cv2.resize(emojis[pred],(256,256)))
+            emoji_img = cv2.resize(emojis[pred],(256,256))
+            cv2.imshow("Emoji",emoji_img)
         except:
             pass
-    cv2.imshow('Face Image',cv2.resize(frame,(600,400)))
+    frame = cv2.resize(frame,(600,400))
+    cv2.imshow('Face Image',frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
