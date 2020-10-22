@@ -48,7 +48,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow","Face To Emoji Converter"))
         self.insertEmoji.setText(_translate("MainWindow", "Insert Face Emoji"))
         self.copyText.setText(_translate("MainWindow", "Copy To Clipboard"))
 

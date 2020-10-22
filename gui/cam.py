@@ -15,17 +15,23 @@ print("[INFO] Modules Loaded")
 # Take the face only
 # Rescale it to 1/255
 # Resize it to (48,48,1)
-# sned image to model
+# send image to model
 # Get the output
 # Display the emotion from emotion array
 
 print("[INFO] Staring Camera")
+# model[0] works fine. Rest all overfits
+models = { 0: '../trained_models/fer_0-1426_0-9519.h5',
+        1: '../trained_models/fer_0-1042_0-9651.h5',
+        2: '../trained_models/fer_0-0268_0-9910.h5'
+        }
+
 
 SHOW_TEXT = False
 cap = cv2.VideoCapture(0)
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
-model = tf.keras.models.load_model('../trained_models/fer_0-1426_0-9519.h5')
+model = tf.keras.models.load_model(models[0])
 emotion = ['Angry','Disgust','Fear','Happy','Neutral','Sad','Suprise']
 curr_emoji = None
 

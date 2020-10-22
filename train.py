@@ -60,8 +60,8 @@ def train(model,train_generator,test_generator):
 
     history = model.fit_generator(train_generator,
                                   epochs=10,
-                                  steps_per_epoch=28709 // BATCH_SIZE,
-                                  validation_steps=7178 // BATCH_SIZE,
+                                  steps_per_epoch=1,#28709 // BATCH_SIZE,
+                                  validation_steps=1,#7178 // BATCH_SIZE,
                                   validation_data=test_generator)
 
     return history
