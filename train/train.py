@@ -8,7 +8,7 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.optimizers import Adam
 
 #Globals
-BATCH_SIZE = 32
+BATCH_SIZE = 64
 INPUT_SHAPE = (48,48,1)
 
 
@@ -50,7 +50,7 @@ def create_model():
     model.add(Dense(7, activation='softmax'))
     return model
 
-model = create_model()
+model = tf.keras.models.load_model('./trained_models/fer_0-1426_0-9519.h5')
 
 def train(model,train_generator,test_generator):
     optimizer = Adam(lr=0.0001,decay=1e-6)
@@ -60,8 +60,8 @@ def train(model,train_generator,test_generator):
 
     history = model.fit_generator(train_generator,
                                   epochs=10,
-                                  steps_per_epoch=1,#28709 // BATCH_SIZE,
-                                  validation_steps=1,#7178 // BATCH_SIZE,
+                                  steps_per_epoch=28709 // BATCH_SIZE,
+                                  validation_steps=7178 // BATCH_SIZE,
                                   validation_data=test_generator)
 
     return history
