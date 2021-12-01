@@ -1,4 +1,4 @@
-opencv
+opencv-python
 tensorflow
 emoji
 pyperclip

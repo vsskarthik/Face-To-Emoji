@@ -1,5 +1,6 @@
+#This file is for training the model
+
 import numpy as np
-import pandas as pd
 import tensorflow as tf
 import matplotlib.pyplot as plt
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
@@ -10,6 +11,7 @@ from tensorflow.keras.optimizers import Adam
 #Globals
 BATCH_SIZE = 64
 INPUT_SHAPE = (48,48,1)
+
 
 
 train_datagen = ImageDataGenerator(rescale=1./255)
@@ -50,7 +52,7 @@ def create_model():
     model.add(Dense(7, activation='softmax'))
     return model
 
-model = tf.keras.models.load_model('./trained_models/fer_0-1426_0-9519.h5')
+model = create_model()
 
 def train(model,train_generator,test_generator):
     optimizer = Adam(lr=0.0001,decay=1e-6)

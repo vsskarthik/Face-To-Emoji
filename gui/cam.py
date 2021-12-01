@@ -1,3 +1,5 @@
+#This file is for taking the user's face and outputing results
+
 print("[INFO] Loading Modules")
 
 import cv2
@@ -7,17 +9,6 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 import tensorflow as tf
 
 print("[INFO] Modules Loaded")
-
-
-#STEPS
-# Video Capture
-# Identify Face
-# Take the face only
-# Rescale it to 1/255
-# Resize it to (48,48,1)
-# send image to model
-# Get the output
-# Display the emotion from emotion array
 
 print("[INFO] Staring Camera")
 # model[0] works fine. Rest all overfits
