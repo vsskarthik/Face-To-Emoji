@@ -20,3 +20,5 @@ To Run the Application:
 1. Install the required files using req.txt file in "gui" folder
 2. run main.py in "gui" folder.
 
+Note: Ensure good lighting conditions
+
