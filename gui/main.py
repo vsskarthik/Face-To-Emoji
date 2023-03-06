@@ -1,7 +1,7 @@
 import os
 from os import system
 
-use_qt = True
+use_qt = False
 
 if os.name == "nt":
     print('Windows')
