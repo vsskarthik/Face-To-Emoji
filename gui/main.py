@@ -1,3 +1,5 @@
+# This files runs the whole application
+
 import os
 from os import system
 
